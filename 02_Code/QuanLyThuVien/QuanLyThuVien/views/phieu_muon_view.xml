@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="pm_tree_view" model="ir.ui.view">
+            <field name="name">PM Tree View</field>
+            <field name="model">model.phieumuon</field>
+            <field name="arch" type="xml">
+                <tree string="" class="PM_tree_class">
+                    <field name="ma_phieu_muon"/>
+                    <field name="ten_kh"/>
+                    <field name="sdt"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="PM_form_view" model="ir.ui.view">
+            <field name="name">PM Form View</field>
+            <field name="model">model.phieumuon</field>
+            <field name="arch" type="xml">
+                <form string="" class="pm_form_class">
+                    <header>
+                        <button name="chap_nhan" string="Chấp nhận" type="object" class="btn-primary"
+                        groups="QuanLyThuVien.QLTV_QuanLyChoMuon_Group" attrs="{'invisible': [('trang_thai', '!=', '0')]}"/>
+                        <button name="tu_choi" string="Từ chối" type="object" class="btn-primary"
+                        groups="QuanLyThuVien.QLTV_QuanLyChoMuon_Group" attrs="{'invisible': [('trang_thai', '!=', '0')]}"/>
+                        <button name="da_tra" string="Đã trả" type="object" class="btn-primary"
+                        groups="QuanLyThuVien.QLTV_QuanLyChoMuon_Group" attrs="{'invisible': [('trang_thai', '!=', '1'),('trang_thai', '!=', '2')]}"/>
+                    </header>
+                    <sheet>
+                        <header>
+                            <field name="trang_thai" widget="statusbar"/>
+                        </header>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="ma_phieu_muon" readonly="True"/>
+                            </h1>
+                        </div>
+
+                        <group>
+                            <group name="thong_tin_pm">
+                                <field name="ten_kh" required="1"/>
+                                <field name="sdt" required="1"/>
+                            </group>
+                            <group>
+                                <field name="dia_chi" required="1"/>
+                            </group>
+                            <group>
+                                <field name="ngay_muon" readonly="True"/>
+                                <field name="ngay_tra" required="1"/>
+                                <field name="so_ngay_muon" readonly="True"/>
+                            </group>
+                            <group>
+
+                                <h1 style="color:Red;">
+                                    Tổng tiền:
+                                </h1>
+                                <h1 style="color:Red;">
+                                    <field name="tong_tien" readonly="True"/> vnd
+                                </h1>
+                                <h6 style="color:Red;">
+                                    Tiền phạt:
+                                </h6>
+                                <h6 style="color:Red;">
+                                    <field name="tien_phat" readonly="True"/> vnd
+                                </h6>
+
+
+
+
+                            </group>
+                                <field name="danhsach_sach"/>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="qlpm_action" model="ir.actions.act_window">
+            <field name="name">Quản lý phiếu mượn</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">model.phieumuon</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="taopm_action" model="ir.actions.act_window">
+            <field name="name">Tạo phiếu mượn</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">model.phieumuon</field>
+            <field name="view_mode">form</field>
+        </record>
+        <record id="xempm_action" model="ir.actions.act_window">
+            <field name="name">Xem phiếu tất cả phiếu mượn</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">model.phieumuon</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="xempm_choduyet_action" model="ir.actions.act_window">
+            <field name="name">Xem phiếu mượn đang chờ duyệt</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">model.phieumuon</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('trang_thai', '=',  '0')]</field>
+        </record>
+        <record id="xempm_dangmuon_action" model="ir.actions.act_window">
+            <field name="name">Xem phiếu mượn đang mượn</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">model.phieumuon</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('trang_thai', '=',  '1')]</field>
+        </record>
+        <record id="xempm_quahan_action" model="ir.actions.act_window">
+            <field name="name">Xem phiếu mượn đã quá hạn</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">model.phieumuon</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('trang_thai', '=',  '2')]</field>
+        </record>
+        <record id="xempm_hoanthanh_action" model="ir.actions.act_window">
+            <field name="name">Xem phiếu mượn đã hoàn thành</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">model.phieumuon</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('trang_thai', '=',  '4')]</field>
+        </record>
+
+
+
+        <menuitem id="qlpm_menu" name="Quản lý phiếu mượn" parent="root_menu"
+                  sequence="4" groups="QuanLyThuVien.QLTV_QuanLyChoMuon_Group"/>
+        <menuitem id="xem_all_pm" name="Tất cả phiếu mượn" parent="qlpm_menu"
+                  action="xempm_action" sequence="0" groups="QuanLyThuVien.QLTV_QuanLyChoMuon_Group"/>
+        <menuitem id="pm_choduyet_menu" name="Phiếu mượn chờ duyệt" parent="qlpm_menu"
+                  action="xempm_choduyet_action" sequence="1" groups="QuanLyThuVien.QLTV_QuanLyChoMuon_Group"/>
+        <menuitem id="pm_dangmuon_menu" name="Phiếu mượn đang mượn" parent="qlpm_menu"
+                  action="xempm_dangmuon_action" sequence="2" groups="QuanLyThuVien.QLTV_QuanLyChoMuon_Group"/>
+        <menuitem id="pm_quahan_menu" name="Phiếu mượn đã quá hạn" parent="qlpm_menu"
+                  action="xempm_quahan_action" sequence="3" groups="QuanLyThuVien.QLTV_QuanLyChoMuon_Group"/>
+        <menuitem id="pm_hoanthanh_menu" name="Phiếu mượn đã hoàn thành" parent="qlpm_menu"
+                  action="xempm_hoanthanh_action" sequence="4" groups="QuanLyThuVien.QLTV_QuanLyChoMuon_Group"/>
+        <menuitem id="taopm_menu" name="Tạo phiếu mượn" parent="root_menu"
+                  action="taopm_action" sequence="4" groups="QuanLyThuVien.QLTV_KhachHang_Group"/>
+        <menuitem id="xempm_menu" name="Phiếu mượn của tôi" parent="root_menu"
+                  action="xempm_action" sequence="5" groups="QuanLyThuVien.QLTV_KhachHang_Group"/>
+
+    </data>
+</odoo>

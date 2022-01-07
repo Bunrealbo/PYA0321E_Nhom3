@@ -1,0 +1,5 @@
+# IDE 
+.idea/
+
+# OS generate
+.DS_Store

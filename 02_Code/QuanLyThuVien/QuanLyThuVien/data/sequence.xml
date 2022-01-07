@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data >
+
+        <!-- Sequences for maPM -->
+        <record id="seq_ma_pm" model="ir.sequence">
+            <field name="name">Mã phiếu mượn</field>
+            <field name="code">model.phieumuon.sequence</field>
+            <field name="prefix">PM</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

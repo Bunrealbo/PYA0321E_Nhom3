@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="the_loai_tree_view" model="ir.ui.view">
+            <field name="name">The Loai Tree View</field>
+            <field name="model">model.theloai</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="ten_theloai"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="the_loai_form_view" model="ir.ui.view">
+            <field name="name">The Loai Form View</field>
+            <field name="model">model.theloai</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <group name="thong_tin_the_loai">
+                                <field name="ten_theloai"/>
+                            </group>
+
+                                <field name="ten_sach"/>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="the_loai_action" model="ir.actions.act_window">
+            <field name="name">Thể loại</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">model.theloai</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="the_loai_menu" name="Quản lý thể loại" parent="qlc_menu"
+                  action="the_loai_action" sequence="2"/>
+
+    </data>
+</odoo>

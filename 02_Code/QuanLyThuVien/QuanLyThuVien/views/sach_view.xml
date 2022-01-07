@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="style.css"?>
+<odoo>
+    <data>
+        <record id="sach_tree_view" model="ir.ui.view">
+            <field name="name">Sach Tree View</field>
+            <field name="model">model.sach</field>
+            <field name="arch" type="xml">
+                <tree string="" class="sach_tree_class">
+                    <field name="ten_sach"/>
+                    <field name="tac_gia" widget="many2many_tags"/>
+                    <field name="the_loai" widget="many2many_tags"/>
+                    <field name="so_trang"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="sach_form_view" model="ir.ui.view">
+            <field name="name">Sach Form View</field>
+            <field name="model">model.sach</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <field name="anh_sach"  widget="image" class="oe_right oe_avatar"/>
+
+                        <group>
+                            <group name="thong_tin_sach">
+                                <field name="ten_sach"/>
+                                <field name="tac_gia" widget="many2many"/>
+                                <field name="so_trang"/>
+                                <field name="the_loai" widget="many2many_tags"/>
+                                <field name="mo_ta"/>
+                            </group>
+                            <group>
+                                <field name="anh" widget="image"/>
+                            </group>
+
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="sach_kanban_view" model="ir.ui.view">
+            <field name="name">sach.kanban</field>
+            <field name="model">model.sach</field>
+            <field name="arch" type="xml">
+                <kanban string="sach" class="kho_kanban_class">
+
+                    <field name="ten_sach"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_employee_master_kanban">
+                                <div class="oe_kanban_details">
+
+                                    <field id="anh_dai_dien" name="anh_sach" widget="image"/>
+                                    <h1 style="text-align:center;font-weight: bold; font-size: 18px;"><field name="ten_sach"/></h1>
+                                    <p style="text-align:center;"><span><field name="tac_gia"/></span></p>
+
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+        <record id="sach_action" model="ir.actions.act_window">
+            <field name="name">Quản lý thư viện</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">model.sach</field>
+            <field name="view_mode">tree,kanban,form</field>
+        </record>
+
+
+
+        <menuitem id="root_menu" name="Quản lý thư viện" sequence="0"/>
+        <menuitem id="qlc_menu" name="Quản lý chung" parent="root_menu" sequence="0" groups="QLTV_QuanLyKho_Group"/>
+        <menuitem id="sach_menu" name="Quản lý sách" parent="qlc_menu"
+                  action="sach_action" sequence="0"/>
+
+    </data>
+</odoo>

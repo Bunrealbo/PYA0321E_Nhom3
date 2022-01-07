@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+admin_access_sach,admin_access_sach,model_model_sach,base.group_erp_manager,1,1,1,1
+admin_access_theloai,admin_access_theloai,model_model_theloai,base.group_erp_manager,1,1,1,1
+admin_access_phieumuon,admin_access_phieumuon,model_model_phieumuon,base.group_erp_manager,1,1,1,1
+admin_access_tacgia,admin_access_tacgia,model_model_tacgia,base.group_erp_manager,1,1,1,1
+qlk_access_sach,qlk_access_sach,model_model_sach,QuanLyThuVien.QLTV_QuanLyKho_Group,1,1,1,1
+qlk_access_theloai,admin_access_theloai,model_model_theloai,QuanLyThuVien.QLTV_QuanLyKho_Group,1,1,1,1
+qlk_access_phieumuon,admin_access_phieumuon,model_model_phieumuon,QuanLyThuVien.QLTV_QuanLyKho_Group,1,1,1,1
+qlk_access_tacgia,admin_access_tacgia,model_model_tacgia,QuanLyThuVien.QLTV_QuanLyKho_Group,1,1,1,1
+kh_access_sach,kh_access_sach,model_model_sach,QuanLyThuVien.QLTV_KhachHang_Group,1,0,0,1
+kh_access_theloai,kh_access_theloai,model_model_theloai,QuanLyThuVien.QLTV_KhachHang_Group,1,0,0,0
+kh_access_phieumuon,kh_access_phieumuon,model_model_phieumuon,QuanLyThuVien.QLTV_KhachHang_Group,1,0,1,1
+kh_access_tacgia,kh_access_tacgia,model_model_tacgia,QuanLyThuVien.QLTV_KhachHang_Group,1,0,0,0
+qlcm_access_sach,qlcm_access_sach,model_model_sach,QuanLyThuVien.QLTV_QuanLyChoMuon_Group,1,1,1,1
+qlcm_access_theloai,qlcm_access_theloai,model_model_theloai,QuanLyThuVien.QLTV_QuanLyChoMuon_Group,1,1,1,1
+qlcm_access_phieumuon,qlcm_access_phieumuon,model_model_phieumuon,QuanLyThuVien.QLTV_QuanLyChoMuon_Group,1,1,1,1
+qlcm_access_tacgia,qlcm_access_tacgia,model_model_tacgia,QuanLyThuVien.QLTV_QuanLyChoMuon_Group,1,1,1,1

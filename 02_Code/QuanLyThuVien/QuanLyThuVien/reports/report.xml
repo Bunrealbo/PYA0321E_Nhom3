@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <report
+                id="action_report_pm"
+                string="In Phiếu Mượn"
+                model="model.phieumuon"
+                report_type="qweb-html"
+                file="QuanLyThuVien.Detail_PM"
+                name="QuanLyThuVien.Detail_PM"
+                print_report_name="'PM  %s' % (object.ma_phieu_muon)"
+        />
+        <template id="Detail_PM">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <t t-foreach="docs" t-as="o">
+
+                            Tình trạng phiếu mượn: <p t-field="o.trang_thai" style="color:red;"/>
+                        </t>
+                        <h1 style="color:red;text-align:center;">Chi tiết phiếu mượn</h1>
+                        <table class="table table-sm o_main_table" style="border-collapse: collapse;">
+                            <thead>
+                                <tr class="o_report_header" style="color:red;">
+                                    <th class="o_report_line_header">Mã phiếu mượn</th>
+                                    <th class="o_report_line_header">Tên khách hàng</th>
+                                    <th class="o_report_line_header">Điện thoại</th>
+                                    <th class="o_report_line_header">Địa chỉ</th>
+                                    <th class="o_report_line_header">Ngày mượn</th>
+                                    <th class="o_report_line_header">Ngày trả(Dự kiến)</th>
+                                    <th class="o_report_line_header">Tiền mượn</th>
+                                    <th class="o_report_line_header">Tiền phạt</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="o">
+                                    <tr>
+                                        <td>
+                                            <span t-field="o.ma_phieu_muon"/>
+                                        </td>
+                                        <td>
+
+                                                <span t-field="o.ten_kh"/>
+
+                                        </td>
+                                        <td>
+                                            <span t-field="o.sdt"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.dia_chi"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.ngay_muon"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.ngay_tra"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.tong_tien"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.tien_phat" style="color:red;"/>
+                                        </td>
+                                    </tr>
+
+                                </t>
+                            </tbody>
+                        </table>
+                        <h3 style="color:red;text-align:center;">Danh sách sách mượn</h3>
+                        <table class="table table-sm o_main_table" style="border-collapse: collapse;">
+                            <thead>
+                                <tr class="o_report_header" style="color:red;">
+                                    <th class="o_report_line_header">Tên sách</th>
+                                    <th class="o_report_line_header">Tác giả</th>
+                                    <th class="o_report_line_header">Số trang</th>
+                                </tr>
+                            </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="o">
+                        <t t-foreach="o.danhsach_sach" t-as="l">
+                            <tr>
+                                        <td>
+                                            <span t-field="l.ten_sach"/>
+                                        </td>
+                                        <td>
+
+                                                <span t-field="l.tac_gia"/>
+
+                                        </td>
+                                        <td>
+                                            <span t-field="l.so_trang"/>
+                                        </td>
+                                    </tr>
+
+                        </t>
+                            </t>
+                        </tbody>
+                        </table>
+
+
+
+
+
+                    </div>
+                </t>
+            </t>
+
+        </template>
+    </data>
+</odoo>

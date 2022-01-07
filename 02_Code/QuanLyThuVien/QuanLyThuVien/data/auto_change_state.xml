@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<odoo>
+<data>
+       <record id="auto_update_state" model="ir.cron">
+            <field name="name">Quản lý thư viện: Scheduled update trạng thái</field>
+            <field name="model_id" ref="model_model_phieumuon"/>
+            <field name="state">code</field>
+            <field name="code">model.check_trang_thai()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+           <field name="active" eval="True"/>
+        </record>
+</data>
+</odoo>

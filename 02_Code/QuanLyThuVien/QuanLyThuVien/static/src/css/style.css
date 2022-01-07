@@ -1,0 +1,46 @@
+
+ .sach_tree_class th:nth-child(1) {
+    width: 5%;
+ }
+ .sach_tree_class td:nth-child(2){
+    width: 35%;
+    font-size: 15px;
+    font-weight: bold;
+ }
+ .sach_tree_class th:nth-child(3) {
+    width: 27%;
+ }
+ .sach_tree_class th:nth-child(4) {
+    width: 27%;
+ }
+ .sach_tree_class th:nth-child(5) {
+    width: 5%;
+ }
+
+ .sach_tree_class th{
+    height:40px;
+    line-height:40px;
+    font-size: 25px;
+    font-weight: bold;
+    color: blue;
+ }
+ .sach_tree_class th,td{
+    text-align:center;
+ }
+ .PM_tree_class th,td{
+ text-align:center;
+ }
+ .tacgia_tree_class th, td{
+ text-align:center;
+ }
+ .kho_kanban_class img{
+    margin:auto;
+    display:block;
+ }
+ .kho_kanban_class img{
+    width:60%;
+    margin:auto;
+    display:block;
+ }
+
+
